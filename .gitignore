@@ -1,0 +1,4 @@
+# common directory name for shared volume
+shared
+# text editor files
+.idea*

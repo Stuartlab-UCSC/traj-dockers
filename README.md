@@ -34,7 +34,7 @@ cd some/directory && mkdir shared
 cp ../../some-data ./shared
 
 # Run the containers Rstudio server
-docker run -v $(pwd)/shared:/home/rstudio/shared -d -p 8787:8787 -e ROOT=TRUE dpt:0
+docker run -v $(pwd)/shared:/home/rstudio/shared -d -p 8787:8787 -e ROOT=TRUE dmccoll/monocle:0.1
 ```
  
 From there open your favorite browser (tested on chrome) at `http://localhost:8787/`.
@@ -69,7 +69,7 @@ write_cell_x_branch(Astrocyte_cds, file="/home/rstudio/shared/Astro.monocle.cell
 write_common_json(Astrocyte_cds, file="/home/rstudio/shared/Astro.monocle.json")
 ```
 
- After executing each line of that script in rstudio's console (e.g. using ctrl + enter shortcut of Rstudio's editor) you will have a `./shared/Astro.monocle.json.tab` and a 
+ After executing each line of that script in rstudio's console (e.g. using ctrl + enter shortcut of Rstudio's editor) you will have a `./shared/Astro.monocle.json` and a 
  `./shared/Astro.monocle.cellxbranch.tab` file on your
  local machine.
  

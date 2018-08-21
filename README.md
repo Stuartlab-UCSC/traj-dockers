@@ -20,7 +20,7 @@ For instructions below I suggest creating a shared volume,
 volume acts as shared storage. The shared storage is the easiest way to
 access input and write output from the container.
 
-## Example workflow analysis with monocle ouputing common formats
+## Example workflow analysis with monocle outputing common formats
 
 starting from a bash shell:
 ```bash

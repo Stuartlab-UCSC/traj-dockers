@@ -25,7 +25,7 @@ access input and write output from the container.
 starting from a bash shell:
 ```bash
 # pull the docker image down to your machine
-docker pull stuartlab/monocle:0.1
+docker pull dmccoll/monocle:0.1
 
 # Move into some directory and make a space for shared storage.
 cd some/directory && mkdir shared
@@ -45,11 +45,12 @@ script could be something as short as:
 ```R
 library(monocle)
 # Make random data for testing
-# rd <- replicate(500, rnorm(500))
-# Astrocyte_cds <- newCellDataSet(rd)
+#rd <- replicate(110, rnbinom(500, c(3, 10, 45, 100), .1))
+#colnames(rd)<- 1:110
+#Astrocyte_cds <- newCellDataSet(rd)
 
 # Contains an Astrocyte_cds CellDataSet 
-load("/home/rstudio/shared/data_for_monocle.rda")
+load("/home/rstudio/shared/Astrocyte_cds.rda")
 
 # Monocle analysis pipeline
 Astrocyte_cds <- estimateSizeFactors(Astrocyte_cds)
@@ -61,11 +62,11 @@ Astrocyte_cds <- orderCells(Astrocyte_cds)
 # Astrocyte_cds is now a completed monocle S4 class instance.
 
 # source the r script with the converters for monocle.
-source("/home/rstudio/traj-converters/src/R/monocle_convert.r")
+source("/traj-converters/src/R/monocle_convert.r")
 
 # output the common json and cell_x_branch matrix from the monocle object
 write_cell_x_branch(Astrocyte_cds, file="/home/rstudio/shared/Astro.monocle.cellxbranch.tab")
-write_common_json(Astrocyte_cds, file="/home/rstudio/shared/Astro.monocle.json.tab")
+write_common_json(Astrocyte_cds, file="/home/rstudio/shared/Astro.monocle.json")
 ```
 
  After executing each line of that script in rstudio's console (e.g. using ctrl + enter shortcut of Rstudio's editor) you will have a `./shared/Astro.monocle.json.tab` and a 
